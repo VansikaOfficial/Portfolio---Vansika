@@ -1,0 +1,330 @@
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: 'Poppins', sans-serif;
+    color: #333;
+    overflow-x: hidden;
+    position: relative;
+    background: linear-gradient(-45deg, #fce4ec, #e0f7fa, #fff3e0, #e1bee7);
+    background-size: 400% 400%;
+    animation: gradientMove 15s ease infinite;
+  }
+
+  /* Animated pastel waves */
+  body::before, body::after {
+    content: "";
+    position: fixed;
+    left: 0;
+    right: 0;
+    height: 300px;
+    background: radial-gradient(circle at 50% 100%, rgba(255,255,255,0.5), transparent 70%);
+    animation: waveFlow 8s ease-in-out infinite alternate;
+    z-index: 0;
+  }
+  body::after {
+    bottom: 0;
+    transform: rotate(180deg);
+  }
+
+  @keyframes waveFlow {
+    0% { transform: translateY(0px) scale(1); opacity: 0.7; }
+    50% { transform: translateY(20px) scale(1.05); opacity: 0.9; }
+    100% { transform: translateY(0px) scale(1); opacity: 0.7; }
+  }
+
+  @keyframes gradientMove {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
+  /* Navbar */
+  header {
+    position: fixed;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(12px);
+    padding: 15px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+    box-shadow: 0 2px 15px rgba(0,0,0,0.08);
+    transition: background 0.3s ease;
+  }
+
+  .logo {
+    font-size: 1.8rem;
+    color: #00796b;
+    font-weight: 600;
+  }
+
+  .nav-links {
+    display: flex;
+    list-style: none;
+    gap: 25px;
+  }
+
+  .nav-links a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+    transition: color 0.3s ease;
+  }
+
+  .nav-links a:hover {
+    color: #00796b;
+  }
+
+  /* Sections */
+  section {
+    position: relative;
+    padding: 120px 15%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    z-index: 1;
+  }
+
+  /* Home Section */
+  .home-content {
+    text-align: center;
+    margin-top: 80px;
+    animation: fadeUp 1.2s ease-out;
+  }
+
+  .home-content h2 {
+    font-size: 2.8rem;
+    font-weight: 600;
+  }
+
+  .home-content span {
+    color: #00796b;
+    font-weight: 700;
+  }
+
+  .home-content p {
+    margin-top: 15px;
+    font-size: 1.1rem;
+    color: #444;
+  }
+
+  /* Buttons */
+  .btn {
+    display: inline-block;
+    margin: 10px;
+    padding: 12px 26px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: 500;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    transition: all 0.4s ease;
+  }
+
+  .btn.primary { background: #00796b; color: #fff; }
+  .btn.linkedin { background: #0a66c2; color: #fff; }
+  .btn.github { background: #333; color: #fff; }
+  .btn.resume { background: #ff4081; color: #fff; }
+
+  .btn:hover {
+    transform: translateY(-3px) scale(1.05);
+    filter: brightness(1.1);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+  }
+
+  /* Glow animation */
+  .btn.primary:hover, .btn.resume:hover {
+    animation: pulse 1.5s infinite alternate;
+  }
+
+  @keyframes pulse {
+    0% { box-shadow: 0 0 5px rgba(0,121,107,0.5); }
+    100% { box-shadow: 0 0 20px rgba(0,121,107,0.8); }
+  }
+
+  /* Scroll Down Arrow */
+  .scroll-down {
+    text-align: center;
+    margin-top: 50px;
+    font-size: 2rem;
+    color: #00796b;
+    animation: bounce 2s infinite;
+  }
+
+  @keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(10px); }
+  }
+
+  /* Projects */
+  .project-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+  }
+
+  .project-card {
+    background: rgba(255,255,255,0.8);
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .project-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+  }
+
+  /* Scroll Animations */
+  .fade-section {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 1.2s ease;
+  }
+
+  .fade-section.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(40px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Contact */
+  #contact {
+    text-align: center;
+  }
+
+  footer {
+    text-align: center;
+    padding: 20px;
+    background: rgba(255,255,255,0.8);
+    font-size: 0.9rem;
+    color: #444;
+  }
+  /* 🌸 Scroll Arrow Style (Down + Up Animation) */
+  .scroll-arrow {
+    position: fixed;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+    transition: opacity 0.6s ease;
+  }
+
+  .scroll-arrow .arrow {
+    display: inline-block;
+    font-size: 2rem;
+    color: #00796b;
+    text-decoration: none;
+    background: rgba(255, 255, 255, 0.6);
+    padding: 8px 14px;
+    border-radius: 50%;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    animation: bounce 2s infinite;
+    transition: all 0.4s ease;
+  }
+
+  .scroll-arrow .arrow:hover {
+    color: #004d40;
+    transform: translateY(6px) scale(1.1);
+    filter: drop-shadow(0 0 6px rgba(0,121,107,0.5));
+  }
+
+  /* Smooth Scroll Behavior */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Bounce Animation */
+  @keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(8px); }
+  }
+  /* Profile Image Frame */
+.profile-frame {
+  width: 210px;
+  height: 210px;
+  margin: 0 auto 25px auto;
+  border-radius: 50%;
+  padding: 6px;
+  background: linear-gradient(135deg, #ffb6d5, #c3e7ff, #d7b4f3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  animation: floatPic 4s ease-in-out infinite;
+}
+
+.profile-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+/* Smooth floating animation */
+@keyframes floatPic {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+}
+/* Profile Image in Corner */
+.profile-corner {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 999;
+}
+
+.profile-corner img {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 4px solid white;
+    box-shadow: 0px 4px 20px rgba(0,0,0,0.15);
+    transition: transform 0.3s ease;
+}
+
+.profile-corner img:hover {
+    transform: scale(1.05);
+}
+/* Profile Image in Top-Right Corner (Does not affect layout) */
+.profile-corner {
+    position: fixed;      /* Stays visible always */
+    top: 20px;
+    right: 20px;
+    z-index: 9999;        /* Always on top */
+    pointer-events: none; /* Does NOT block clicks on layout */
+}
+
+.profile-corner img {
+    width: 95px;
+    height: 95px;
+    object-fit: cover;
+
+    /* Professional rounded design */
+    border-radius: 50%;
+    border: 3px solid #ffffff;
+    box-shadow: 0px 4px 20px rgba(0,0,0,0.18);
+
+    /* Smooth subtle motion */
+    transition: transform 0.2s ease;
+    pointer-events: auto; /* Needed so hover works */
+}
+
+.profile-corner img:hover {
+    transform: scale(1.05);
+}
